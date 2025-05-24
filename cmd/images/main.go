@@ -19,6 +19,30 @@ import (
 	"github.com/t1d333/smartlectures/pkg/logger"
 )
 
+// import (
+//     "github.com/minio/minio-go/v7"
+//     "github.com/minio/minio-go/v7/pkg/credentials"
+// )
+
+// func NewRepository(logger logger.Logger, cfg *Config) (*Repository, error) {
+//     // Инициализация MinIO клиента
+//     client, err := minio.New(cfg.URL, &minio.Options{
+//         Creds:  credentials.NewStaticV4(cfg.AccessKey, cfg.SecretKey, ""),
+//         Secure: cfg.UseSSL,
+//     })
+//     if err != nil {
+//         return nil, err
+//     }
+    
+//     // Проверка существования бакета
+//     exists, err := client.BucketExists(context.Background(), cfg.Bucket)
+//     if err != nil || !exists {
+//         return nil, fmt.Errorf("bucket %s does not exist", cfg.Bucket)
+//     }
+    
+//     return &Repository{client: client, logger: logger, cfg: cfg}, nil
+// }
+
 func main() {
 	appCfg, err := images.NewConfig(os.Getenv("CONFIG_PATH"))
 	if err != nil {

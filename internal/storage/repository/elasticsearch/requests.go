@@ -24,15 +24,17 @@ func buildSearchNoteReqBody(query string, userId int) map[string]interface{} {
 	// }
 
 	fmt.Println("elastic------------",userId,"------------")
+	fmt.Println("elastic2------------",query,"------------")
+
 	return map[string]interface{}{
 		"query": map[string]interface{}{
 			"bool": map[string]interface{}{
 				"must": []interface{}{
-					map[string]interface{}{
-						"term": map[string]interface{}{
-							"userId": userId,
-						},
-					},
+					// map[string]interface{}{
+					// 	"term": map[string]interface{}{
+					// 		"userId": userId,
+					// 	},
+					// },
 					map[string]interface{}{
 						"multi_match": map[string]interface{}{
 							"query":     query,

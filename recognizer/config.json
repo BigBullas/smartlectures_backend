@@ -1,0 +1,6 @@
+{
+    "rgb2gray": true,
+    "high_contrast": true,
+    "apply_fft": true,
+    "apply_denoising": false
+}

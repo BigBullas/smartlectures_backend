@@ -1,7 +1,15 @@
 ---
+# region: ru-msk
+# url: https://hb.ru-msk.vkcs.cloud
+# partitionId: abc
+# bucket: easytex
+# port: 8000
+# address: localhost
+
+
 region: ru-msk
-url: https://hb.ru-msk.vkcs.cloud
-partitionId: abc
-bucket: easytex
-port: 8000
-address: localhost
+url: http://localhost:9000  # Измените на ваш локальный адрес MinIO
+accessKey: minioadmin      # Дефолтные credentials (замените в продакшене)
+secretKey: minioadmin
+bucket: easytex            # Бакет должен быть создан заранее
+useSSL: false              # Для локального подключения без SSL

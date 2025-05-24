@@ -1,2 +1,3 @@
 dragnofly_url: "dragonfly:6379"
 dragonfly_password: password
+storage_address: "storage:8003"

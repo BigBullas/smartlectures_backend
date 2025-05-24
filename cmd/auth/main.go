@@ -8,6 +8,7 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
+	"encoding/json"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -35,6 +36,9 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
+
+	configJSON, _ := json.MarshalIndent(cfg, "", "  ")
+	logger.Infof("Full config:\n %s", string(configJSON))
 
 	router := gin.Default()
 

@@ -1,5 +1,4 @@
 ---
-version: '3.8'
 services:
   nginx:
     image: nginx
@@ -41,7 +40,9 @@ services:
       dockerfile: ./cmd/storage/Dockerfile
     ports: [8003:8000]
     networks: [backend]
-    depends_on: [elasticsearch]
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
     environment: [ELASTICSEARCH_URL=http://elasticsearch:9200]
     restart: always
   auth:
@@ -51,11 +52,11 @@ services:
       dockerfile: ./cmd/auth/Dockerfile
     ports: [8004:8000]
     networks: [backend]
-    depends_on: [postgres, dragonfly]
+    depends_on: [postgres, dragonfly, storage]
     volumes:
       - ./configs/auth.yml:/etc/auth.yml
     restart: always
-    environment: ['CONFIG_PATH=/etc/auth.yml', 'DB_URL=${DB_URL}']
+    environment: ['CONFIG_PATH=/etc/auth.yml', 'DB_URL=${DB_URL}', 'STORAGE_ADDRESS=${STORAGE_ADDRESS}']
   recognizer:
     container_name: recognizer
     build:
@@ -100,6 +101,11 @@ services:
     ports: [9200:9200, 9300:9300]
     networks: [backend]
     environment: [discovery.type=single-node, xpack.security.enabled=false]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
 networks:
   backend:
     driver: bridge

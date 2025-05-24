@@ -5,10 +5,11 @@ info:
   description: Документация по API EasyTex
   version: 0.1.9
 servers:
-  - url: https://smartlectures.ru/api/v1
-    description: Main server
   - url: http://localhost:8080/api/v1
     description: Localhost server
+  - url: https://smartlectures.ru/api/v1
+    description: Main server
+  
 
 
 paths:

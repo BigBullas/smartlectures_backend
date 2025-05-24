@@ -79,12 +79,6 @@ BEFORE UPDATE ON dirs
 FOR EACH ROW
 EXECUTE FUNCTION update_dir_repeated_num();
 
-
-CREATE TRIGGER create_default_note_trigger
-AFTER INSERT ON users
-FOR EACH ROW
-EXECUTE FUNCTION create_default_note();
-
 create or replace function create_default_note()
 returns trigger
 as
@@ -169,6 +163,9 @@ BEGIN
 > Преобразовать - можно добавить распознанное фото текста или формулы. Они поместятся в документ как кусок текста.
 
 > Добавить фото конспекта - распознает смешанные фотографии, т.е. те, на которых есть и текст, и формулы');
+
+RETURN NEW; -- This was missing in the original
+
 END;
 $$
 language plpgsql
@@ -184,11 +181,7 @@ language plpgsql
 --     user_id     BIGINT REFERENCES users (user_id) NOT NULL
 -- );
 
-
-CREATE TRIGGER update_dir_repeated_num_trigger
-BEFORE UPDATE ON dirs
+CREATE TRIGGER create_default_note_trigger
+AFTER INSERT ON users
 FOR EACH ROW
-EXECUTE FUNCTION update_dir_repeated_num();
-
-
-
+EXECUTE FUNCTION create_default_note();

@@ -56,7 +56,7 @@ func (d *Delivery) Login(c *gin.Context) {
 		token,
 		int(service.Expire.Seconds()),
 		"/",
-		"smartlectures.ru",
+		"localhost",
 		false,
 		true,
 	)
@@ -75,7 +75,7 @@ func (d *Delivery) Logout(c *gin.Context) {
 		return
 	}
 
-	c.SetCookie("session", "", -1, "/", "smartlectures.ru", false, true)
+	c.SetCookie("session", "", -1, "/", "localhost", false, true)
 	c.Status(http.StatusNoContent)
 }
 
@@ -125,7 +125,7 @@ func (d *Delivery) Register(c *gin.Context) {
 		token,
 		int(service.Expire.Seconds()),
 		"/",
-		"smartlectures.ru",
+		"localhost",
 		false,
 		true,
 	)
