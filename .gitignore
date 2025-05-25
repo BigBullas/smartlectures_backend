@@ -27,3 +27,5 @@ configs/nginx/key.pem
 .aws
 .idea
 __pycache__
+
+recognizer_2

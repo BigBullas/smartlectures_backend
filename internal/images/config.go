@@ -7,15 +7,13 @@ import (
 )
 
 type Config struct {
-	BucketName  string `yaml:"bucket"`
-	Region      string `yaml:"region"`
-	URL         string `yaml:"url"`
-	PartitionId string `yaml:"partitionId"`
-	Port        int    `yaml:"port"`
-	Address     string `yaml:"address"`
+	BucketName string `yaml:"bucket"`
+	Region     string `yaml:"region"`
+	URL        string `yaml:"url"`
+	AccessKey  string `yaml:"accessKey"`
+	SecretKey  string `yaml:"secretKey"`
+	UseSSL     bool   `yaml:"useSSL"`
 }
-
-
 
 func NewConfig(path string) (Config, error) {
 	cfg := Config{}

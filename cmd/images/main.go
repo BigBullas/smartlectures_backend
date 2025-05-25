@@ -33,13 +33,13 @@ import (
 //     if err != nil {
 //         return nil, err
 //     }
-    
+
 //     // Проверка существования бакета
 //     exists, err := client.BucketExists(context.Background(), cfg.Bucket)
 //     if err != nil || !exists {
 //         return nil, fmt.Errorf("bucket %s does not exist", cfg.Bucket)
 //     }
-    
+
 //     return &Repository{client: client, logger: logger, cfg: cfg}, nil
 // }
 

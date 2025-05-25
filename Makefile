@@ -2,10 +2,10 @@
 
 
 build:
-	@docker compose up --build -d
+	@docker-compose up --build -d
 	
 down:
-	@docker compose down
+	@docker-compose down
 
 prod:
 	@mv ./docker-compose.yml ./docker-compose-dev.yml 
@@ -31,8 +31,8 @@ prod-ml-search:
 
 
 swagger:
-	@docker compose up swagger -d
-	@docker compose up nginx -d
+	@docker-compose up swagger -d
+	@docker-compose up nginx -d
 
 lint:
 	@golangci-lint run ./...
